@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "staff-snap-developer-guide": "Staff-Snap Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -134,7 +134,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "staff-snap": "Staff-Snap"
       },
       "headingKeywords": {}
     },
@@ -145,9 +145,12 @@
     },
     {
       "src": "team/celestinetan03.md",
-      "title": " Project Portfolio Page",
+      "title": "Project Portfolio Page",
       "headings": {
-        "project-staff-snap": "Project: Staff-Snap"
+        "project-staff-snap": "Project: Staff-Snap",
+        "celestine-tan-s-project-portfolio-page": "Celestine Tan's Project Portfolio Page",
+        "overview": "Overview",
+        "summary-of-contributions": "Summary of Contributions"
       },
       "headingKeywords": {}
     },
@@ -164,7 +167,10 @@
     {
       "src": "team/ivanleekk.md",
       "headings": {
-        "project-staff-snap": "Project: Staff-Snap"
+        "project-staff-snap": "Project: Staff-Snap",
+        "ivan-lee-s-project-portfolio-page": "Ivan Lee's Project Portfolio Page!",
+        "what-is-staff-snap": "What is Staff-Snap?",
+        "what-have-i-done": "What have I done?"
       },
       "headingKeywords": {}
     },
