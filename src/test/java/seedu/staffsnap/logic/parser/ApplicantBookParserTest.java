@@ -103,7 +103,7 @@ public class ApplicantBookParserTest {
 
     @Test
     public void parseCommand_filter() throws Exception {
-        assertTrue(parser.parseCommand(FilterCommand.COMMAND_WORD + " " + "d/ name") instanceof FilterCommand);
+        assertTrue(parser.parseCommand(FilterCommand.COMMAND_WORD + " " + "n/ name") instanceof FilterCommand);
     }
 
     @Test
