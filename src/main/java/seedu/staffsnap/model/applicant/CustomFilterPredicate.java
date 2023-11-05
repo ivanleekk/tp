@@ -78,12 +78,16 @@ public class CustomFilterPredicate implements Predicate<Applicant> {
             }
         }
         if (this.lessThanScore != null) {
-            if (applicant.getScore().getAverageScore() >= this.lessThanScore) {
+            System.out.println(applicant.getScore().getAverageScore());
+            System.out.println(applicant.getScore().getAverageScore() > this.lessThanScore);
+            if (applicant.getScore().getAverageScore() > this.lessThanScore) {
                 return false;
             }
         }
         if (this.greaterThanScore != null) {
-            if (applicant.getScore().getAverageScore() <= this.greaterThanScore) {
+            System.out.println(applicant.getScore().getAverageScore());
+            System.out.println(applicant.getScore().getAverageScore() > this.greaterThanScore);
+            if (applicant.getScore().getAverageScore() < this.greaterThanScore) {
                 return false;
             }
         }

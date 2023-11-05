@@ -445,12 +445,12 @@ Format: `filter [n/NAME] [e/EMAIL] [p/POSITION] [hp/PHONE] [s/STATUS] [lts/SCORE
 * for `[n/NAME]` field, only applicants whose name contains the full substring will be returned, e.g. `n/Ivan Chew` will **NOT** return `Ivan Lee`.
 * `[n/NAME]` `[e/EMAIL]` `[p/POSITION]` fields are case-insensitive, e.g. `n/JOHN` will return `john`.
 * If provided, the fields `NAME`, `PHONE`, `EMAIL`, and `POSITION` must satisfy the [parameter constraints](#command-parameters-1) previously described.
-* `[lts/SCORE]` `[gts/SCORE]` fields do **NOT** include equality in filters, e.g. `gts/7` will return all applicants whose score is strictly greater than `7`.
+* `[lts/SCORE]` `[gts/SCORE]` fields include equality in filters, e.g. `gts/7` will return all applicants whose score is greater than or equal to `7`.
 
 Example:
 * `filter n/Ivan` filters the applicant list to applicants whose name contains `ivan`.
 * `filter n/Ivan p/Testing Engineer status/u` filters applicant list to applicants whose name contains `ivan` applying for the role of `testing engineer` and has a status of `Undecided`.
-* `filter gts/7` filters applicant list to applicants whose score is strictly greater than 7.
+* `filter gts/7` filters applicant list to applicants whose score is greater than or equal to `7`.
 
 
 <br>
