@@ -129,6 +129,9 @@ public class Score {
      * @return averageScore The average score of the applicant.
      */
     public Double getAverageScore() {
+        if (averageScore.isNaN()) {
+            return 0.;
+        }
         return averageScore;
     }
 
