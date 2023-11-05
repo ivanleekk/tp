@@ -48,14 +48,14 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                         PREFIX_GREATER_THAN_SCORE);
 
 
-        if (argMultimap.getValue(PREFIX_NAME).isEmpty() &&
-                argMultimap.getValue(PREFIX_PHONE).isEmpty() &&
-                argMultimap.getValue(PREFIX_EMAIL).isEmpty() &&
-                argMultimap.getValue(PREFIX_POSITION).isEmpty() &&
-                argMultimap.getValue(PREFIX_INTERVIEW).isEmpty() &&
-                argMultimap.getValue(PREFIX_STATUS).isEmpty() &&
-                argMultimap.getValue(PREFIX_LESS_THAN_SCORE).isEmpty() &&
-                argMultimap.getValue(PREFIX_GREATER_THAN_SCORE).isEmpty()
+        if (argMultimap.getValue(PREFIX_NAME).isEmpty()
+                && argMultimap.getValue(PREFIX_PHONE).isEmpty()
+                && argMultimap.getValue(PREFIX_EMAIL).isEmpty()
+                && argMultimap.getValue(PREFIX_POSITION).isEmpty()
+                && argMultimap.getValue(PREFIX_INTERVIEW).isEmpty()
+                && argMultimap.getValue(PREFIX_STATUS).isEmpty()
+                && argMultimap.getValue(PREFIX_LESS_THAN_SCORE).isEmpty()
+                && argMultimap.getValue(PREFIX_GREATER_THAN_SCORE).isEmpty()
         ) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_FAILURE));
