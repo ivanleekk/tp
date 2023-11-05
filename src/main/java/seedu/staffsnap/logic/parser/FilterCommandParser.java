@@ -1,5 +1,6 @@
 package seedu.staffsnap.logic.parser;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.staffsnap.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.staffsnap.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.staffsnap.logic.parser.CliSyntax.PREFIX_GREATER_THAN_SCORE;
@@ -35,6 +36,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FilterCommand parse(String args) throws ParseException {
+        requireNonNull(args);
         String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
@@ -44,6 +46,20 @@ public class FilterCommandParser implements Parser<FilterCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
                         PREFIX_POSITION, PREFIX_INTERVIEW, PREFIX_STATUS, PREFIX_LESS_THAN_SCORE,
                         PREFIX_GREATER_THAN_SCORE);
+
+
+        if (argMultimap.getValue(PREFIX_NAME).isEmpty() &&
+                argMultimap.getValue(PREFIX_PHONE).isEmpty() &&
+                argMultimap.getValue(PREFIX_EMAIL).isEmpty() &&
+                argMultimap.getValue(PREFIX_POSITION).isEmpty() &&
+                argMultimap.getValue(PREFIX_INTERVIEW).isEmpty() &&
+                argMultimap.getValue(PREFIX_STATUS).isEmpty() &&
+                argMultimap.getValue(PREFIX_LESS_THAN_SCORE).isEmpty() &&
+                argMultimap.getValue(PREFIX_GREATER_THAN_SCORE).isEmpty()
+        ) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterCommand.MESSAGE_FAILURE));
+        }
 
         Name name = null;
         Phone phone = null;
