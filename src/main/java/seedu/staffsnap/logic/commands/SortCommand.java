@@ -16,12 +16,13 @@ import seedu.staffsnap.model.applicant.Descriptor;
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorted all Applicants. "
-            + "Parameters: "
-            + PREFIX_DESCRIPTOR + "DESCRIPTOR ";
+
     public static final String MESSAGE_SUCCESS = "Sorted all Applicants";
     public static final String MESSAGE_FAILURE = "Please add a descriptor with d/ "
             + "[name/phone/score/status/email/position].";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts all Applicants based on the descriptor given. "
+            + "\nParameters: "
+            + PREFIX_DESCRIPTOR + "[name/phone/score/status/email/position] ";
 
     private final Descriptor descriptor;
     private final Boolean isDescendingOrder;

@@ -25,7 +25,7 @@ public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all applicants who match the descriptor."
-            + " Possible fields include:" + "\n"
+            + "\nParameters: "
             + PREFIX_NAME + " [NAME], "
             + PREFIX_EMAIL + " [EMAIL], "
             + PREFIX_POSITION + " [POSITION], "
