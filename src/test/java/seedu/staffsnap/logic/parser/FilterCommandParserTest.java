@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.staffsnap.logic.commands.FilterCommand;
 import seedu.staffsnap.model.applicant.CustomFilterPredicate;
-import seedu.staffsnap.model.applicant.Email;
 import seedu.staffsnap.model.applicant.Name;
 import seedu.staffsnap.model.applicant.Phone;
 import seedu.staffsnap.model.applicant.Position;
@@ -36,7 +35,7 @@ class FilterCommandParserTest {
     @Test
     void parse_emailOnly_success() {
         assertParseSuccess(parser, " e/ test@test.com", new FilterCommand(new CustomFilterPredicate(null, null,
-                new Email("test@test.com"), null, null, null, null, null)));
+                "test@test.com", null, null, null, null, null)));
     }
 
     @Test

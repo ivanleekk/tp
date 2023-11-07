@@ -128,6 +128,18 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String email} into an {@code Email}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code email} is invalid.
+     */
+    public static String parseEmailAsString(String email) throws ParseException {
+        requireNonNull(email);
+        String trimmedEmail = email.trim();
+        return trimmedEmail.toLowerCase();
+    }
+
+    /**
      * Parses a {@code String type} and {@code String rating} into a {@code Interview}.
      * Leading and trailing whitespaces will be trimmed.
      *

@@ -16,7 +16,6 @@ import java.util.List;
 import seedu.staffsnap.logic.commands.FilterCommand;
 import seedu.staffsnap.logic.parser.exceptions.ParseException;
 import seedu.staffsnap.model.applicant.CustomFilterPredicate;
-import seedu.staffsnap.model.applicant.Email;
 import seedu.staffsnap.model.applicant.Name;
 import seedu.staffsnap.model.applicant.Phone;
 import seedu.staffsnap.model.applicant.Position;
@@ -63,7 +62,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
 
         Name name = null;
         Phone phone = null;
-        Email email = null;
+        String email = null;
         Position position = null;
         List<Interview> interviewList = null;
         Status status = null;
@@ -78,7 +77,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         }
         if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-            email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+            email = ParserUtil.parseEmailAsString(argMultimap.getValue(PREFIX_EMAIL).get());
         }
         if (argMultimap.getValue(PREFIX_POSITION).isPresent()) {
             position = ParserUtil.parsePosition(argMultimap.getValue(PREFIX_POSITION).get());

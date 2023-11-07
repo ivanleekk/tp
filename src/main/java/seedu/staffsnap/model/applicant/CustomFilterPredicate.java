@@ -18,7 +18,7 @@ public class CustomFilterPredicate implements Predicate<Applicant> {
     private final Name name;
     private final Phone phone;
     // Data fields
-    private final Email email;
+    private final String email;
     private final Position position;
     private final List<Interview> interviews;
     private final Status status;
@@ -34,7 +34,7 @@ public class CustomFilterPredicate implements Predicate<Applicant> {
      * @param position   Position applied for by applicant
      * @param interviews Interviews applicant has to go through
      */
-    public CustomFilterPredicate(Name name, Phone phone, Email email, Position position, List<Interview> interviews,
+    public CustomFilterPredicate(Name name, Phone phone, String email, Position position, List<Interview> interviews,
                                  Status status, Double lessThanScore, Double greaterThanScore) {
         this.name = name;
         this.phone = phone;
@@ -63,7 +63,7 @@ public class CustomFilterPredicate implements Predicate<Applicant> {
             }
         }
         if (this.email != null) {
-            if (!StringUtil.containsWordIgnoreCase(applicant.getEmail().toString(), this.email.toString())) {
+            if (!StringUtil.containsWordIgnoreCase(applicant.getEmail().toString(), this.email)) {
                 return false;
             }
         }

@@ -51,9 +51,9 @@ class FilterCommandTest {
         List<Interview> interviewList2 = CARL.getInterviews();
         Status status2 = CARL.getStatus();
 
-        CustomFilterPredicate firstPredicate = new CustomFilterPredicate(name1, phone1, email1, position1,
+        CustomFilterPredicate firstPredicate = new CustomFilterPredicate(name1, phone1, email1.toString(), position1,
                 interviewList1, status1, null, null);
-        CustomFilterPredicate secondPredicate = new CustomFilterPredicate(name2, phone2, email2, position2,
+        CustomFilterPredicate secondPredicate = new CustomFilterPredicate(name2, phone2, email2.toString(), position2,
                 interviewList2, status2, null, null);
 
         FilterCommand filterFirstCommand = new FilterCommand(firstPredicate);
@@ -112,7 +112,7 @@ class FilterCommandTest {
     public void execute_multipleKeywords_zeroApplicantsFound() {
         String expectedMessage = String.format(MESSAGE_APPLICANTS_LISTED_OVERVIEW, 0);
         CustomFilterPredicate predicate = new CustomFilterPredicate(ALICE.getName(), BENSON.getPhone(),
-                CARL.getEmail(), DANIEL.getPosition(), ELLE.getInterviews(), FIONA.getStatus(), null, null);
+                CARL.getEmail().toString(), DANIEL.getPosition(), ELLE.getInterviews(), FIONA.getStatus(), null, null);
         FilterCommand command = new FilterCommand(predicate);
         expectedModel.updateFilteredApplicantList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
