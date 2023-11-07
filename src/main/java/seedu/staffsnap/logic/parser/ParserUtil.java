@@ -247,6 +247,9 @@ public class ParserUtil {
         Double result;
         try {
             result = Double.parseDouble(score);
+            if (result < 0 || result > 10) {
+                throw new NumberFormatException("Score out of range");
+            }
         } catch (NumberFormatException e) {
             throw new ParseException(FilterCommand.MESSAGE_SCORE_PARSE_FAILURE);
         }

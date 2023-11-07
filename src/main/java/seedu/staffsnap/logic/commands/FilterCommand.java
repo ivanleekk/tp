@@ -24,9 +24,8 @@ public class FilterCommand extends Command {
 
     public static final String COMMAND_WORD = "filter";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all applicants who match the descriptor.";
-    public static final String MESSAGE_FAILURE = "Please add at least one field to filter by. "
-            + "Possible fields include:" + "\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all applicants who match the descriptor."
+            + " Possible fields include:" + "\n"
             + PREFIX_NAME + " [NAME], "
             + PREFIX_EMAIL + " [EMAIL], "
             + PREFIX_POSITION + " [POSITION], "
@@ -34,8 +33,18 @@ public class FilterCommand extends Command {
             + PREFIX_STATUS + " [STATUS], "
             + PREFIX_LESS_THAN_SCORE + " [SCORE], "
             + PREFIX_GREATER_THAN_SCORE + " [SCORE]";
-    public static final String MESSAGE_SCORE_PARSE_FAILURE = "Score in lts/ or gts/ has to be a number with up to 1 "
-            + "decimal place";
+    public static final String MESSAGE_FAILURE = "Please add at least one field to filter by."
+            + " Possible fields include:" + "\n"
+            + PREFIX_NAME + " [NAME], "
+            + PREFIX_EMAIL + " [EMAIL], "
+            + PREFIX_POSITION + " [POSITION], "
+            + PREFIX_PHONE + " [PHONE], "
+            + PREFIX_STATUS + " [STATUS], "
+            + PREFIX_LESS_THAN_SCORE + " [SCORE], "
+            + PREFIX_GREATER_THAN_SCORE + " [SCORE]";
+
+    public static final String MESSAGE_SCORE_PARSE_FAILURE = "Score in lts/ or gts/ has to be a number between 0.0 "
+            + "and 10.0 inclusive.";
 
     private final CustomFilterPredicate predicate;
 
