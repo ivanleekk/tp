@@ -18,7 +18,7 @@ import seedu.staffsnap.model.applicant.Status;
 class FilterCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-            FilterCommand.MESSAGE_FAILURE);
+            FilterCommand.MESSAGE_USAGE);
     private FilterCommandParser parser = new FilterCommandParser();
 
 
