@@ -21,15 +21,15 @@ img
 [//]: # (<!-- * Table of Contents -->)
 [//]: # (<page-nav-print />)
 
+<a name="table-of-contents"></a>
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Quick start](#quick-start)
+* [Quick Start](#quick-start)
 * [Using this Guide](#using-this-guide)
-  * [Notation Guide](#notation-guide)
-* [User Interface Guide](#user-interface-guide)
-  * [Main Window GUI](#main-window-gui)
-  * [Applicant Card GUI](#applicant-card-gui)
+  * [Understanding the Notations](#understanding-the-notations)
+  * [Understanding the Main Window GUI](#understanding-the-main-window-gui)
+  * [Understanding the Applicant Card GUI](#understanding-the-applicant-card-gui)
 * [Features](#features)
   * [Applicant Management Features](#applicant-management-features)
     * [Command Parameters](#command-parameters-1)
@@ -57,17 +57,39 @@ img
     * [Editing the data file](#editing-the-data-file)
 * [FAQ](#faq)
 * [Glossary](#glossary)
+
 ---
 <br>
 
 <a name="introduction"></a>
 ## Introduction
 
-Welcome to the User Guide of **Staff-Snap**! Here you'll find everything you need to start using **Staff-Snap** like a pro.
+Welcome to the **Staff-Snap** User Guide!
 
-**Staff-Snap** is an easy-to-use desktop application for Hiring Managers of Small-Medium Enterprises to manage hundreds of applicants during each recruitment cycle.
+**Staff-Snap** is a desktop app for Hiring Managers like you to manage the hiring and tracking of applicants, optimised for use via a [Command Line Interface (CLI)](#glossary). Used by hiring managers in companies around the globe, it is effective, easy-to-use and reliable, making the hiring process a much more enjoyable experience.
 
-While **Staff-Snap** has a simple and intuitive [Graphical User Interface (GUI)](#glossary), it is optimised for use with a [Command Line Interface (CLI)](#glossary). If you are a fast typer, **Staff-Snap** can get your applicant management tasks done faster than traditional GUI applications.
+The purpose of this guide is to get you familiar with the features of **Staff-Snap** - from the very basics, to the most advanced features the application has to offer. These features range from the simple task of adding an applicant to being able to calculate an applicant's score from their ratings in the interview stages. Every single feature is explained in this guide. You can check out the [Table of Contents](#table-of-contents) to navigate to a feature you might be interested in using.
+
+To begin using this guide, ensure you meet the [minimum system requirements](#minimum-system-requirements). Once this is done, go to the [quick start](#quick-start) section to get the app up and running. Once you have done so, please feel free to go through the features sections to find out what features Staff-Snap has installed. We recommend going through it in the order of this guide but any order works as well! You may check out our table of contents to jump to any section of your choice.
+
+<br>
+
+---
+<br>
+
+## Minimum System Requirements
+1. A Computer running Windows/MacOS/Linux.
+2. Java 11 or higher
+   1. If you do not have Java 11, follow [this](https://docs.oracle.com/en/java/javase/11/install/overview-jdk-installation.html#GUID-8677A77F-231A-40F7-98B9-1FD0B48C346A) installation guide.
+
+
+<br>
+
+---
+<br>
+
+## Need help?
+If you are unable to follow any of the steps below or get help, please email our CEO at staffsnap@gmail.com or call our 24/7 technical helpline 69696969 for assistance. (For educational purposes, not real contact details.)
 
 <br>
 
@@ -77,17 +99,16 @@ While **Staff-Snap** has a simple and intuitive [Graphical User Interface (GUI)]
 <a name="quick-start"></a>
 ## Quick Start 
 
-1. Ensure you have [Java](#glossary) 11 or above installed in your computer.
-2. Download the latest `staffsnap.jar` from [here](https://github.com/AY2324S1-CS2103T-W08-1/tp/releases/tag/v1.3).
-3. Copy the [JAR](#glossary) file to an empty folder that you would like to use as the [home folder](#glossary) for Staff-Snap.
-4. Open the [command terminal](#glossary).
-5. Navigate into your home folder with the `cd` command.
-6. Enter the `java -jar staffsnap.jar` command to run the application.
-7. You should see the [GUI](#glossary) displayed as shown below. Note how the application contains some sample data.<br>
+1. Download the latest `staffsnap.jar` from [here](https://github.com/AY2324S1-CS2103T-W08-1/tp/releases/tag/v1.3).
+2. Copy the [JAR](#glossary) file to an empty folder that you would like to use as the [home folder](#glossary) for Staff-Snap.
+3. Open the [command terminal](#glossary).
+4. Navigate into your home folder with the `cd` command.
+5. Enter the `java -jar staffsnap.jar` command to run the application.
+6. You should see the [GUI](#glossary) displayed as shown below. Note how the application contains some sample data.<br>
 
    ![Main Window view](images/user-guide/MainWindow.png)
 
-8. Type the [command](#glossary) in the command box and press <kbd>Enter</kbd> to execute it. e.g. typing `help` and pressing <kbd>Enter</kbd> will open this User Guide in your browser window. Some example commands that you can try:
+7. Type the [command](#glossary) in the command box and press <kbd>Enter</kbd> to execute it. e.g. typing `help` and pressing <kbd>Enter</kbd> will open this User Guide in your browser window. Some example commands that you can try:
    * `add n/John Doe hp/81238123 p/Boss e/john@mail.com` : Adds an applicant named John Doe to the list. 
    * `list` : Lists all applicants.
    * `delete 1` : Deletes the 1st applicant shown in the current list.
@@ -112,10 +133,13 @@ If you are unfamiliar with the command terminal, you can right-click the `staffs
 <a name="using-this-guide"></a>
 ## Using this Guide
 
+---
+<br>
+
 This section introduces the symbols and notations used throughout this guide. We recommend that you read this section closely before using this guide.
 
-<a name="notation-guide"></a>
-### Notation Guide
+<a name="understanding-the-notations"></a>
+### Understanding the Notations
 
 | Notation                                                                                                                     | Explanation                                                                                               | Example                                                                                                                                            |
 |------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -124,34 +148,46 @@ This section introduces the symbols and notations used throughout this guide. We
 | Parameters can be in any order                                                                                               | Parameters for all commands are valid regardless of the order they are supplied in.                       | Both the commands `add n/Lee Soo Man hp/98891131…` and `add hp/98891131 n/Lee Soo Man…` are valid and will be accepted.                            |
 | Extraneous parameters for commands that do not take in parameters such as `help`, `list`, `clear`, `exit` will be ignored.   | If any parameters are given for commands that do not require them, the given parameters will be ignored.  |
 
-<a name="user-interface-guide"></a>
+<br>
 
-## User Interface Guide
+---
+<br>
 
-<a name="main-window-gui"></a>
+<a name="understanding-the-main-window-gui"></a>
+### Understanding the Main Window GUI
 
-### Main Window GUI <br>
+<br>
 
 ![Main Window guide](images/user-guide/MainWindowGuide.png)
 
-| GUI Component | Purpose                                                                 |
-|---------------|-------------------------------------------------------------------------|
-| Command Area  | This area is where users type in commands for the application.          |
-| Response Area | This is where Staffsnap displays messages in response to user commands. |
-| Working Area  | This is where the list of applicants is displayed.                      |
+<br>
 
-<a name="applicant-card-gui"></a>
+| <div style="width:130px">GUI Component</div> | <div style="width:auto">Purpose</div>                                    |
+|----------------------------------------------|--------------------------------------------------------------------------|
+| Command Area                                 | This is where users type in commands for the application.                |
+| Response Area                                | This is where Staff-Snap displays messages in response to user commands. |
+| Working Area                                 | This is where the applicant list is displayed.                           |
 
-### Applicant Card GUI <br>
+<br>
+
+---
+<br>
+
+<a name="understanding-the-applicant-card-gui"></a>
+### Understanding the Applicant Card GUI
+
+<br>
 
 ![Applicant Card guide](images/user-guide/ApplicantCardGuide.png)
 
-| GUI Component     | Purpose                                                                                                                                       |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Applicant details | This is where details about the applicant are displayed. These include their name, handphone number, email, and position applied.             |
-| Applicant status  | This is where the status of the applicant is displayed. The status is categorised into Offered, Rejected, and Undecided.                      |
-| Overall score     | This is where the overall score of the applicant is displayed. This allows for a fast and easy way to know the performance of each applicant. |
-| Interview score   | This is where the score for a specific interview is stored.                                                                                   |
+<br>
+
+| <div style="width:130px">GUI Component</div> | Purpose                                                                                                                                |
+|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Applicant details                            | This is where details about the applicant are displayed. These include their name, phone number, email, and position applied.          |
+| Applicant status                             | This is where the status of the applicant is displayed. The status is categorised into Offered, Rejected, or Undecided.                |
+| Overall score                                | This is where the overall score of the applicant is displayed. This represents the _average_ rating of all the applicant's interviews. |
+| Interview rating                             | This is where the rating for a each interview is displayed.                                                                            |
 
 ---
 <br>
@@ -167,6 +203,8 @@ This section introduces the full-suite of features in Staff-Snap. The features a
 2. [Interview Management Features](#interview-management-features)
 3. [Applicant Processing Features](#applicant-processing-features)
 4. [Miscellaneous Features](#miscellaneous-features)
+
+<br>
 
 <a name="applicant-management-features"></a>
 ### Applicant Management Features
@@ -202,6 +240,11 @@ Format: `add n/NAME hp/PHONE e/EMAIL p/POSITION`
 <box type="warning" header="**Caution**">
     Duplicate applicants are not allowed. Two applicants are considered duplicates if they have the same phone number or email.
 </box>
+
+<box type="tip" header="**Note**">
+    As <code>NAME</code> can only contain alphanumeric characters and spaces, names containing hyphens <code>-</code> or slashes <code>/</code> are not allowed in this version of the app.  
+</box>
+
 
 Example:
 * `add n/John Doe hp/91234567 e/johndoe@gmail.com p/Software Engineer`
@@ -276,6 +319,8 @@ Example:
 
 ---
 
+<br>
+
 <a name="interview-management-features"></a>
 ### Interview Management Features
 
@@ -316,6 +361,8 @@ converted to `technical2`.
 * Entering `technical`, then `technical` again will result in the 2nd entry being converted to `technical1`.
 
 Format: `addi INDEX t/TYPE [r/RATING]`
+* Adds an interview to the applicant at the specified `INDEX`. The index refers to the index number shown in the displayed applicant list.
+* A maximum of 5 interviews can be added to each applicant.
 
 Example:
 * `addi 1 t/technical r/8.6` adds a Technical interview with rating 8.6 to the 1st person in the displayed applicant list.
@@ -449,7 +496,7 @@ Format: `filter [n/NAME] [e/EMAIL] [p/POSITION] [hp/PHONE] [s/STATUS] [lts/SCORE
 
 Example:
 * `filter n/Ivan` filters the applicant list to applicants whose name contains `ivan`.
-* `filter n/Ivan p/Testing Engineer status/u` filters applicant list to applicants whose name contains `ivan` applying for the role of `testing engineer` and has a status of `Undecided`.
+* `filter n/Ivan p/Testing Engineer s/u` filters applicant list to applicants whose name contains `ivan` applying for the role of `testing engineer` and has a status of `Undecided`.
 * `filter gts/7` filters applicant list to applicants whose score is greater than or equal to `7`.
 
 
@@ -459,18 +506,18 @@ Example:
 <br>
 
 <a name="import"></a>
-#### Importing from csv: `import`
+#### Importing from CSV: `import`
 
-Imports applicants from a [csv](#glossary) file.
+Imports applicants from a [CSV](#glossary) file.
 
 Format: `import f/FILENAME`
-* The csv file must be placed in the home folder of Staff-Snap.
-* The csv file must have the following headers: `name`, `phone`, `email`, `position` in that order, as shown below.<br>
+* The CSV file must be placed in the home folder of Staff-Snap.
+* The CSV file must have the following headers: `name`, `phone`, `email`, `position` in that order, as shown below.<br>
   
 <img src="images/user-guide/csv_header.png" alt="mac_os_warning">
 
 * The fields of the columns must satisfy the [parameter constraints](#command-parameters-1) for `NAME`, `PHONE`, `EMAIL`, and `POSITION` respectively.
-* A sample csv file can be found [here](demo.csv).
+* A sample CSV file can be found [here](demo.csv).
 
 Example:
 * `import f/demo.csv`
@@ -478,6 +525,8 @@ Example:
 <br>
 
 ---
+
+<br>
 
 <a name="miscellaneous-features"></a>
 ### Miscellaneous Features

@@ -34,7 +34,7 @@ class StatusCommandParserTest {
 
     @Test
     void parse_missingIndex_throwsParseException() {
-        assertParseFailure(parser, "s/ o", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, " s/o", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 StatusCommand.MESSAGE_NO_INDEX));
     }
 }

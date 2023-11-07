@@ -3,7 +3,10 @@ package seedu.staffsnap.logic.commands;
 import static seedu.staffsnap.logic.parser.CliSyntax.PREFIX_FILENAME;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import seedu.staffsnap.logic.Messages;
 import seedu.staffsnap.logic.commands.exceptions.CommandException;
@@ -29,9 +32,9 @@ public class ImportCommand extends Command {
     public static final String MESSAGE_SUCCESS_PLURAL = "Imported %d applicants from %s";
     public static final String MESSAGE_INVALID_CSV_FORMAT = "The csv file has an invalid format!";
     public static final String MESSAGE_INVALID_FILENAME = "The file name provided is not a valid csv file!";
-    public static final String MESSAGE_DUPLICATE_APPLICANT = "The csv file contains an applicant "
-            + "already in Staff-Snap: %s";
-    public static final String MESSAGE_CSV_CONTAINS_DUPLICATE = "The csv file contains duplicate applicants: %s";
+    public static final String MESSAGE_DUPLICATE_APPLICANT = "The csv file contains applicants that are "
+            + "already in Staff-Snap:\n%s";
+    public static final String MESSAGE_CSV_CONTAINS_DUPLICATE = "The csv file contains duplicate applicants:\n%s";
     public static final String MESSAGE_FILE_NOT_FOUND = "File not found: %s";
     public static final String FILENAME_VALIDATION_REGEX = "[-_. A-Za-z0-9]+\\.csv";
 
@@ -54,16 +57,22 @@ public class ImportCommand extends Command {
 
         // checks if the csv file contains duplicate applicants
         if (containsDuplicates(applicantsToImport)) {
-            Applicant duplicateApplicantInCsv = getDuplicateApplicantInCsv(applicantsToImport);
+            List<Applicant> duplicateApplicantInCsv = getDuplicateApplicantsInCsv(applicantsToImport);
+            String duplicateApplicantsInCsvString = duplicateApplicantInCsv.stream()
+                    .map(Messages::format)
+                    .collect(Collectors.joining(",\n"));
             throw new CommandException(String.format(MESSAGE_CSV_CONTAINS_DUPLICATE,
-                    Messages.format(duplicateApplicantInCsv)));
+                    duplicateApplicantsInCsvString));
         }
 
         // checks if the csv file contains applicants already in Staff-Snap
         if (hasDuplicateApplicants(applicantsToImport, model)) {
-            Applicant duplicateApplicantInModel = getDuplicateApplicantInModel(applicantsToImport, model);
+            List<Applicant> duplicateApplicantsInModel = getDuplicateApplicantsInModel(applicantsToImport, model);
+            String duplicateApplicantsInModelString = duplicateApplicantsInModel.stream()
+                    .map(Messages::format)
+                    .collect(Collectors.joining(",\n"));
             throw new CommandException(String.format(MESSAGE_DUPLICATE_APPLICANT,
-                    Messages.format(duplicateApplicantInModel)));
+                    duplicateApplicantsInModelString));
         }
 
         for (Applicant applicant : applicantsToImport) {
@@ -85,11 +94,18 @@ public class ImportCommand extends Command {
         return applicantsToImport.stream().anyMatch(model::hasApplicant);
     }
 
-    private Applicant getDuplicateApplicantInCsv(List<Applicant> applicantsToImport) {
-        return applicantsToImport.stream().filter(applicant -> applicantsToImport.stream()
-                .filter(applicant::isSameApplicant).count() > 1).findFirst().get();
+    // Solution below adapted by
+    // https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist
+    private List<Applicant> getDuplicateApplicantsInCsv(List<Applicant> applicantsToImport) {
+        return new ArrayList<>(new LinkedHashSet<>(
+                applicantsToImport.stream().filter(applicant -> applicantsToImport.stream()
+                .filter(applicant::isSameApplicant).count() > 1).collect(Collectors.toList())));
     }
-    private Applicant getDuplicateApplicantInModel(List<Applicant> applicantsToImport, Model model) {
-        return applicantsToImport.stream().filter(model::hasApplicant).findFirst().get();
+
+    // Solution below adapted by
+    // https://stackoverflow.com/questions/203984/how-do-i-remove-repeated-elements-from-arraylist
+    private List<Applicant> getDuplicateApplicantsInModel(List<Applicant> applicantsToImport, Model model) {
+        return new ArrayList<>(new LinkedHashSet<>(
+                applicantsToImport.stream().filter(model::hasApplicant).collect(Collectors.toList())));
     }
 }

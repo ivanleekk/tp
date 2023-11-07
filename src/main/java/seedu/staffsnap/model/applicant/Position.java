@@ -9,7 +9,7 @@ import static seedu.staffsnap.commons.util.AppUtil.checkArgument;
  */
 public class Position implements Comparable<Position> {
 
-    public static final String MESSAGE_CONSTRAINTS = "Positions can take any values, should not be blank"
+    public static final String MESSAGE_CONSTRAINTS = "Positions can take any values, should not be blank "
             + "and should not be more than 30 characters";
 
     /*
